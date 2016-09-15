@@ -105,25 +105,3 @@ function getLeafsBelow(item, nodes) {
 }
 console.log("getLeafsBelow", getLeafsBelow('fruit', nodes));
 
-
-
-function traverse(nodes) {
-	var node = nodes['root'];
-	if (typeof node.children == 'undefined') {
-		var children = [];
-	} else {
-		var children = node.children;
-	}
-	while (children.length > 0) {
-		var x = children.pop();
-		for (j in x) {
-			if (typeof x[j].children != 'undefined') {
-				children.push(x[j].children);
-			}
-		}
-		console.log(x.value);
-	}
-}
-nodes = make_nodes(sp);
-// console.log("traverse", traverse(nodes));
-
