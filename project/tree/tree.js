@@ -16,11 +16,11 @@ var make_nodes = function(sp) {
 		if (typeof nodes[parent]['children'] == 'undefined') {
 			nodes[parent]['children'] = [];
 		}
-	    if (typeof nodes[child] == 'undefined') {
-	    	nodes[child] = {'value': child};
-	    }
-	    nodes[child]['parent'] = nodes[parent];
-	    nodes[parent]['children'].push(nodes[child]);
+		if (typeof nodes[child] == 'undefined') {
+			nodes[child] = {'value': child};
+		}
+		nodes[child]['parent'] = nodes[parent];
+		nodes[parent]['children'].push(nodes[child]);
 	}
 	return nodes;
 }
