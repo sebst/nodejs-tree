@@ -1,3 +1,5 @@
+// gets all children (including grandchildren) of a node
+
 var forNode = function(item, nodes) {
 
 	var node = nodes[item];
