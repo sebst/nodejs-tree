@@ -1,0 +1,9 @@
+{ 
+	"name" : "nodejs-tree", 
+	"description" : "Some functions to operate on trees", 
+	"main" : "index.js",
+
+	"scripts": {
+		"test": "mocha test"
+	}
+}
