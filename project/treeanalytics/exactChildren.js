@@ -2,14 +2,15 @@ var allChildren = require('./allChildren');
 
 // which nodes have exactly two children
 var withN = function(n, nodes) {
-	var nodes_of_n = [];
-	for (i in nodes) {
+	var nodesOfN = [];
+	var x;
+	for (var i in nodes) {
+		x = 1;
 		if(allChildren.forNode(i, nodes).length == n) {
-			nodes_of_n.push(nodes[i]);
+			nodesOfN.push(nodes[i]);
 		}
-
 	}
-	return nodes_of_n;
+	return nodesOfN;
 }
 
 var withNAsString = function(n, nodes) {

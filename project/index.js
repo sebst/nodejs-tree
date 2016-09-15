@@ -18,17 +18,3 @@ var leafs = require('./treeanalytics/leafs');
 // console.log(leafs.below('fruit', nodes));
 console.log(leafs.belowAsString('fruit', nodes));
 
-
-// console.log(nodes['yellow'])
-
-nodes = tree.make_nodes(sp);
-var allChildren = require('./treeanalytics/allChildren');
-console.log("-----------------------------------------");
-var x = allChildren.forNode('yellow', nodes);
-var y = allChildren.forNode('fruit', nodes);
-console.log(x.length, typeof x, y.length, typeof y);
-console.log("-----------------------------------------");
-console.log("s", x);
-
-nodes = tree.make_nodes(sp);
-console.log("t", exactChildren.withNAsString(1, nodes));

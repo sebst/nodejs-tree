@@ -31,6 +31,7 @@ describe("TreeAnalytics", function() {
 			expect(allChildren.forNode('yellow', nodes)).to.have.length(2);
 			expect(allChildren.forNode('blue', nodes)).to.have.length(1);
 			expect(allChildren.forNode('fruit', nodes)).to.have.length(10);
+			expect(allChildren.forNode('root', nodes)).to.have.length(17);
 		});
 		it("should find the right lengths for root node", function() {
 			var nodes = tree.make_nodes(sp);
