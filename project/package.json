@@ -1,9 +1,12 @@
-{ 
-	"name" : "nodejs-tree", 
-	"description" : "Some functions to operate on trees", 
-	"main" : "index.js",
-
-	"scripts": {
-		"test": "mocha test"
-	}
+{
+  "name": "nodejs-tree",
+  "description": "Some functions to operate on trees",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "dependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^3.0.2"
+  }
 }
