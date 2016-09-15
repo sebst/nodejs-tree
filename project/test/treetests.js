@@ -1,6 +1,7 @@
 var tree = require('../tree/tree');
 var expect = require('expect.js');
 var sp = "apple, sweet\nbanana, sweet\nblue, cheese\ncheese, root\ncitrus, sour\nfruit, root\ngorgonzola, blue\nlemon, citrus\nlime, citrus\norange, citrus\nparmesan, yellow\npecorino, yellow\nredcurrant, sour\nsour, fruit\nsweet, fruit\nwatermelon, sweet\nyellow, cheese".split('\n');
+var sp_false = "TODO".split('\n');
 
 describe("Tree Builder", function() {
 	describe("make_tree", function() {
@@ -13,24 +14,62 @@ describe("Tree Builder", function() {
 			expect(lineCount).to.equal(nodeCount);
 
 		});
+		it("should warn on unprocessable input", function() {
+			
+			// TODO
+
+		});
 	});
 });
 
 describe("TreeAnalytics", function() {
+	describe("allChildren", function() {
+		it("should find the right lengths", function() {
+			var nodes = tree.make_nodes(sp);
+			var allChildren = require('../treeanalytics/allChildren');
+
+			expect(allChildren.forNode('yellow', nodes)).to.have.length(2);
+			expect(allChildren.forNode('blue', nodes)).to.have.length(1);
+			expect(allChildren.forNode('fruit', nodes)).to.have.length(10);
+		});
+		it("should find the right lengths for root node", function() {
+			var nodes = tree.make_nodes(sp);
+			var allChildren = require('../treeanalytics/allChildren');
+
+			expect(allChildren.forNode('root', nodes)).to.have.length(17);
+		});
+	});
+
 	describe("exactChildren", function() {
 		it("should find blue", function() {
 			var exactChildren = require('../treeanalytics/exactChildren');
 			var nodes = tree.make_nodes(sp);
+			var t = exactChildren.withNAsString(1, nodes);
+
+			expect(t).to.contain('blue');
+			expect(t).to.have.length(1);
+		});
+
+		it("should find yellow", function() {
+			var exactChildren = require('../treeanalytics/exactChildren');
+			var nodes = tree.make_nodes(sp);
 			var t = exactChildren.withNAsString(2, nodes);
 
-			expect(t[0]).to.equal('blue');
+			expect(t).to.contain('yellow');
+			expect(t).to.have.length(1);
 		});
+
 		it("should return undefined if no nodes can be found", function() {
 			var exactChildren = require('../treeanalytics/exactChildren');
 			var nodes = tree.make_nodes(sp);
 			var t = exactChildren.withNAsString(12, nodes);
 
 			expect(t[0]).to.equal(undefined);
+		});
+		it("should warn on unprocessable nodes", function() {
+			
+			// TODO
+
 		});
 	});
 
@@ -43,12 +82,25 @@ describe("TreeAnalytics", function() {
 			expect(t).to.equal('/fruit/sour/citrus/lemon');
 		});
 
+		it("should find /cheese/yellow/pecorino", function() {
+			var fullPath = require('../treeanalytics/fullPath');
+			var nodes = tree.make_nodes(sp);
+			var t = fullPath.asString('pecorino', nodes);
+
+			expect(t).to.equal('/cheese/yellow/pecorino');
+		});
+
 		it("should return undefined for unknown nodes", function() {
 			var fullPath = require('../treeanalytics/fullPath');
 			var nodes = tree.make_nodes(sp);
 			var t = fullPath.asString('le-mon', nodes);
 
 			expect(t).to.equal(undefined);
+		});
+		it("should warn on unprocessable nodes", function() {
+			
+			// TODO
+
 		});
 	});
 
@@ -76,6 +128,11 @@ describe("TreeAnalytics", function() {
 
 			expect(t).to.be.an('array');
 			expect(t).to.be.empty();
+		});
+		it("should warn on unprocessable nodes", function() {
+			
+			// TODO
+
 		});
 	});
 });
