@@ -7,11 +7,17 @@ var below = function(item, nodes) {
 		var node = nodes[i];
 		if (typeof node.children == 'undefined') {
 			if (fullPath.get(node.value, nodes).indexOf(nodes[item])>-1) {
-				items.push(node.value);
+				items.push(node);
 			}
 		}
 	}
 	return items;
 }
 
-module.exports = {below: below};
+var belowAsString = function(item, nodes) {
+	return below(item, nodes).map(function(item) {
+		return item.value;
+	});
+}
+
+module.exports = {below: below, belowAsString: belowAsString};
