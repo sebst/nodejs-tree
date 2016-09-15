@@ -2,10 +2,10 @@
 var get = function(item, nodes) {
 	var parents = [nodes[item]];
 	if (typeof nodes[item] == 'undefined') {
-		return "";
+		return [];
 	}
 	if (typeof nodes[item].parent == 'undefined') {
-		return '/';
+		return [];
 	}
 	var parent = nodes[item].parent;
 	while (parent) {
@@ -21,6 +21,9 @@ var asString = function(item, nodes) {
 		return o.value;
 	});
 	parents.shift()
+	if (parents.length == 0) {
+		return undefined;
+	}
 	return "/" + parents.join('/');
 }
 

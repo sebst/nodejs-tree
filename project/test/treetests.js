@@ -12,8 +12,8 @@ describe("Tree Builder", function() {
 
 			expect(lineCount).to.equal(nodeCount);
 
-		})
-	})
+		});
+	});
 });
 
 describe("TreeAnalytics", function() {
@@ -24,7 +24,14 @@ describe("TreeAnalytics", function() {
 			var t = exactChildren.withNAsString(2, nodes);
 
 			expect(t[0]).to.equal('blue');
-		})
+		});
+		it("should return undefined if no nodes can be found", function() {
+			var exactChildren = require('../treeanalytics/exactChildren');
+			var nodes = tree.make_nodes(sp);
+			var t = exactChildren.withNAsString(12, nodes);
+
+			expect(t[0]).to.equal(undefined);
+		});
 	});
 
 	describe("fullPath", function() {
@@ -34,7 +41,15 @@ describe("TreeAnalytics", function() {
 			var t = fullPath.asString('lemon', nodes);
 
 			expect(t).to.equal('/fruit/sour/citrus/lemon');
-		})
+		});
+
+		it("should return undefined for unknown nodes", function() {
+			var fullPath = require('../treeanalytics/fullPath');
+			var nodes = tree.make_nodes(sp);
+			var t = fullPath.asString('le-mon', nodes);
+
+			expect(t).to.equal(undefined);
+		});
 	});
 
 	describe("leafs", function() {
@@ -52,7 +67,16 @@ describe("TreeAnalytics", function() {
 			expect(t).to.contain('watermelon');
 
 			expect(t).to.have.length(7);
-		})
+		});
+
+		it("should return [] for unknown nodes", function() {
+			var leafs = require('../treeanalytics/leafs');
+			var nodes = tree.make_nodes(sp);
+			var t = leafs.belowAsString('fru-it', nodes);
+
+			expect(t).to.be.an('array');
+			expect(t).to.be.empty();
+		});
 	});
 });
 
