@@ -18,6 +18,7 @@ A little `express.js` webservice is available with this endpoints:
  - `/leafs/:node` - will return a list of leafs below :node
  - `/fullPath/:node` - will return the fullPath for one node
  - `/exactChildren/:n` - will return a list of nodes with exactly :n children
+ - `/nodes` - will return a list of all nodes with their parents and children
 Start the webserver with `node web.js` and it will server on port `3000`.
 
 ## Remarks

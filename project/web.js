@@ -42,6 +42,19 @@ app.get('/leafs/:node', function(req, res) {
 	})
 });
 
+
+app.get('/nodes', function(req, res) {
+	res.send(Object.keys(nodes).map(function(node){
+		return {
+			value: nodes[node].value,
+			children: typeof nodes[node].children == 'undefined' ? [] : nodes[node].children.map(function(node){
+				return node.value
+			}),
+			parent: typeof nodes[node].parent == 'undefined' ? [] : nodes[node].parent.value
+		}
+	}))
+});
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
