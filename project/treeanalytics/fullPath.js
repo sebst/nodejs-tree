@@ -7,7 +7,7 @@ var get = function(item, nodes) {
 	if (typeof nodes[item].parent == 'undefined') {
 		return [];
 	}
-	var parent = nodes[item].parent;
+	var parent = Object.create(nodes[item].parent);
 	while (parent) {
 		parents.push(parent);
 		parent = parent.parent;

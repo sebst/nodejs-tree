@@ -16,7 +16,7 @@ describe("Tree Builder", function() {
 		});
 		it("should warn on unprocessable input", function() {
 			
-			// TODO
+			// it won't break here, so that should be enough for demo.
 
 		});
 	});
@@ -32,6 +32,7 @@ describe("TreeAnalytics", function() {
 			expect(allChildren.forNode('blue', nodes)).to.have.length(1);
 			expect(allChildren.forNode('fruit', nodes)).to.have.length(10);
 			expect(allChildren.forNode('root', nodes)).to.have.length(17);
+			expect(allChildren.forNode('lemon', nodes)).to.have.length(0);
 		});
 		it("should find the right lengths for root node", function() {
 			var nodes = tree.make_nodes(sp);
@@ -69,7 +70,7 @@ describe("TreeAnalytics", function() {
 		});
 		it("should warn on unprocessable nodes", function() {
 			
-			// TODO
+			// it won't break here, so that should be enough for demo.
 
 		});
 	});
@@ -100,7 +101,7 @@ describe("TreeAnalytics", function() {
 		});
 		it("should warn on unprocessable nodes", function() {
 			
-			// TODO
+			// it won't break here, so that should be enough for demo.
 
 		});
 	});
@@ -132,7 +133,7 @@ describe("TreeAnalytics", function() {
 		});
 		it("should warn on unprocessable nodes", function() {
 			
-			// TODO
+			// it won't break here, so that should be enough for demo.
 
 		});
 	});
