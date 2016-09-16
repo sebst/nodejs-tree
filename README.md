@@ -13,6 +13,13 @@ so, just run `npm install` and `npm test` from within the `project` folder to ru
 There are some unimplemented test cases for currupt data. At lest, the modules won't break with faulty csv files,
 so that should be enough for demo.
 
+## Web Access
+A little `express.js` webservice is available with this endpoints:
+ - `/leafs/:node` - will return a list of leafs below :node
+ - `/fullPath/:node` - will return the fullPath for one node
+ - `/exactChildren/:n` - will return a list of nodes with exactly :n children
+Start the webserver with `node web.js` and it will server on port `3000`.
+
 ## Remarks
 For an easy in-memory processing, all nodes built by `make_nodes` are accessible by their name directly on
 the nodes object. It uses a circular model to reference their children and parents.
